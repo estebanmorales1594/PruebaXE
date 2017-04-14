@@ -47,6 +47,16 @@
         	<artifactId>speech-to-text</artifactId>
         	<version>3.7.2</version>
         </dependency>
+        <dependency>
+        	<groupId>com.ibm.watson.developer_cloud</groupId>
+        	<artifactId>language-translator</artifactId>
+        	<version>3.7.2</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.ibm.watson.developer_cloud</groupId>
+        	<artifactId>visual-recognition</artifactId>
+        	<version>3.7.2</version>
+        </dependency>
     </dependencies>
 
     <build>

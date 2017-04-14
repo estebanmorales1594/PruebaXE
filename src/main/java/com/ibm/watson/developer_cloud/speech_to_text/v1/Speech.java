@@ -58,7 +58,7 @@ public class Speech {
 		Thread.sleep(5 * 1000);
 
 		   
-		texto=transcript.getResults().get(0).getAlternatives().get(0).getTranscript();
+   	   	texto=transcript.getResults().get(0).getAlternatives().get(0).getTranscript();
 		 // closing the WebSockets underlying InputStream will close the WebSocket itself.
 		 line.stop();
 		 line.close();
