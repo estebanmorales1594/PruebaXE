@@ -1,4 +1,4 @@
-package com.ibm.watson.developer_cloud.visual_recognition.v3;
+package LogicaDeNegocios;
 
 import java.io.File;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
 
-public class Recognition extends HttpServlet{
+public class Recognition extends HttpServlet {
 	
 	/**
 	 * 

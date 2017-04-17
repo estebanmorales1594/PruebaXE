@@ -1,4 +1,4 @@
-package com.ibm.watson.developer_cloud.language_translator.v2;
+package LogicaDeNegocios;
 
 import java.io.IOException;
 
@@ -10,7 +10,6 @@ import com.ibm.watson.developer_cloud.language_translator.v2.model.TranslationRe
 
 public class Translator extends HttpServlet{
 	
-
 
 	/**
 	 * 

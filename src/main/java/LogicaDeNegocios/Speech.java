@@ -1,4 +1,4 @@
-package com.ibm.watson.developer_cloud.speech_to_text.v1;
+package LogicaDeNegocios;
 
 import javax.servlet.http.HttpServlet;
 import javax.sound.sampled.AudioFormat;
@@ -13,7 +13,7 @@ import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.BaseRecognizeCallback;
 
-public class Speech extends HttpServlet {
+public class Speech  extends HttpServlet {
 	
 	/**
 	 * 
