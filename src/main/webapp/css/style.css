@@ -37,22 +37,18 @@ body {
 	font-size: 14px;
 	line-height: 1.5em;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 #header{
-	height: 200px;
+	height: 100px;
 	position: relative;
-	z-index: 10;
+	z-index: 2;
 }
 
 #main{
 	background: #ffffff;
 	position: relative;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 #content{
@@ -136,7 +132,7 @@ body {
 /* HOME --------------------------------------------------------*/
 
 body.home #header{
-	height: 430px;
+	height: 200px;
 	position: relative;
 	z-index: 10;
 }
@@ -208,69 +204,7 @@ h6{ font-size: 20px; }
 }
 
 
-/* SOCIAL --------------------------------------------------------*/
 
-#social-holder{
-	overflow: hidden;
-	width: 100%;
-	padding-top: 40px;	
-}
-
-.social{
-	display: block;
-	float: right;
-	overflow: hidden;
-	margin-right: 20px;
-}
-
-.social li{
-	display: block;
-	width: 32px;
-	height: 32px;
-	float: left;
-	margin-right: 10px;
-	margin-bottom: 10px;
-}
-
-.social a{
-	display: block;
-	width: 32px;
-	height: 32px;
-	text-indent: -9000px;
-}
-
-
-/* SEARCH --------------------------------------------------------*/
-
-.top-search{
-	position: absolute;
-	top:118px;
-	right: 50px;
-}
-
-#searchform #s{
-	color: #49494b;
-	font-size: 12px;
-	width: 160px;
-	height: 21px;
-	margin: 0px 0px 5px 0px;
-	padding: 2px 35px 2px 8px;
-	border: 0;
-	background: #f0efeb;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-}
-
-#searchform #searchsubmit{
-	position: absolute; 
-	top: 0px;
-	right: 0px;
-	width: 25px;
-	height: 25px;
-	border: 0px;
-	background: url(../img/search-submit.png) no-repeat  transparent -3px 2px;
-}
 
 /* NAVIGATION --------------------------------------------------------*/
 
@@ -284,8 +218,6 @@ h6{ font-size: 20px; }
 	width: 906px;
 	background: #ffd800;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
 
 #nav>li{
@@ -306,8 +238,6 @@ h6{ font-size: 20px; }
 	text-decoration: none;
 	padding: 7px 10px 6px 10px;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 	
 	text-shadow: 0 1px rgba(255, 255, 255, 0.5);
 }
@@ -326,21 +256,19 @@ h6{ font-size: 20px; }
 	margin-top: -1px;
 	background: #ffd800;
 	border-radius: 0px 0px 10px 10px;
-	-moz-border-radius: 0px 0px 10px 10px;
-	-webkit-border-radius: 0px 0px 10px 10px;
+	
 }
 
 #nav>li>ul ul{
 	margin-top: 0px;
 	border-radius: 0px 10px 10px 10px;
-	-moz-border-radius: 0px 10px 10px 10px;
-	-webkit-border-radius: 0px 10px 10px 10px;
+	
 }
 
 #nav>li ul li a{
 	display: block;
 	padding: 10px 15px;
-	display: block;
+	
 	font-size: 12px;
 	color: #363636;
 	text-decoration: none;
@@ -353,8 +281,7 @@ h6{ font-size: 20px; }
 
 #nav>li ul li:last-child a:hover{ /* last item its rounded at bottom */
 	border-radius: 0px 0px 10px 10px;
-	-moz-border-radius: 0px 0px 10px 10px;
-	-webkit-border-radius: 0px 0px 10px 10px;
+	
 }
 
 /* FILTER --------------------------------------------------------*/
@@ -379,8 +306,7 @@ h6{ font-size: 20px; }
 	padding: 3px 10px;
 	background: #363636;	
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 #content .filter li:first-child{
@@ -410,76 +336,6 @@ h6{ font-size: 20px; }
 
 
 
-/* TWITTER --------------------------------------------------------*/
-
-#twitter{
-	position: relative;
-	background: #f2f1f1;
-	height: 170px;
-	width: 100%;
-	background: #f2f1f1 url(../img/twitter-border.png) repeat-x;	
-	border-radius: 0px 0px 10px 10px;
-	-moz-border-radius: 0px 0px 10px 10px;
-	-webkit-border-radius: 0px 0px 10px 10px;
-}
-
-#twitter #prev-tweet{
-	display: block;
-	position: absolute;
-	top: 66px;
-	left: 30px;
-	width: 30px;
-	height: 35px;
-	background: transparent url(../img/prev-arrow.png) no-repeat top left;
-}
-
-#twitter #next-tweet{
-	display: block;
-	position: absolute;
-	top: 66px;
-	right: 30px;
-	width: 30px;
-	height: 35px;
-	background: transparent url(../img/next-arrow.png) no-repeat top right;
-}
-
-#twitter #tweets .tweet_list{
-	display: block;
-	position: absolute;
-	top: 0px;
-	left: 80px;
-	width: 810px;
-	height: 170px;
-}
-
-#twitter #tweets .tweet_list li{
-	display: block;
-	width: 810px;
-	height: 120px; /* original height 170px */
-	font-size: 20px;
-	line-height: 1.5em;
-	font-style: italic;
-	color: #838383;
-	text-align: center;
-	padding-top: 62px; 
-}
-
-#twitter #tweets .tweet_list li .tweet_time a{
-	text-decoration: none;
-	color: #ccc;
-}
-
-#twitter #tweets .tweet_list li a{
-	text-decoration: none;
-	color: #37b2d1;
-}
-
-#twitter #tweets p.loading{
-	text-align: center;
-	color: #ccc;
-	padding-top: 75px;
-	font-style: italic;
-}
 
 /* PAGES --------------------------------------------------------*/
 
@@ -524,8 +380,7 @@ h6{ font-size: 20px; }
 	margin-bottom: 30px;
 	background: #f1f1f1;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 #projects-list .project .project-thumbnail .cover{
@@ -558,8 +413,7 @@ h6{ font-size: 20px; }
 	opacity: 0;
 	
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 	
 	-webkit-box-shadow: 0px 2px 3px #000; 
 	-moz-box-shadow: 0px 2px 3px #000; 
@@ -590,8 +444,7 @@ h6{ font-size: 20px; }
 	height: 267px;
 	margin-bottom: 30px;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 
@@ -603,8 +456,7 @@ h6{ font-size: 20px; }
 	text-decoration: none;
 	background: #363636;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 #content .project-column .meta a:hover{ background: #000;}
@@ -631,8 +483,7 @@ h6{ font-size: 20px; }
 	margin-right: 30px;
 	margin-top: 30px;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 /* PROJECT-RELATED -----------------------------------------------*/
@@ -667,8 +518,7 @@ h6{ font-size: 20px; }
 	height: 148px;
 	margin-bottom: 30px;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 .related-projects li a.box img{
@@ -701,8 +551,7 @@ h6{ font-size: 20px; }
 	margin-left: 30px;
 	margin-bottom: 30px;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 #content .gallery.three-cols li{
@@ -787,8 +636,7 @@ h6{ font-size: 20px; }
 	margin-bottom: 30px;
 	background: #f1f1f1;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 
@@ -823,8 +671,7 @@ h6{ font-size: 20px; }
 	border-style: solid;
 	
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 #posts .post .read-more{
@@ -839,8 +686,7 @@ h6{ font-size: 20px; }
 	color: #f1f1f1;
 	opacity: 0;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 	
 	-webkit-box-shadow: 0px 2px 3px #000; 
 	-moz-box-shadow: 0px 2px 3px #000; 
@@ -873,8 +719,7 @@ h6{ font-size: 20px; }
 	margin-right: 5px;
 	margin-bottom: 5px;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	
 }
 
 #posts .post .meta-tags a:hover{
@@ -947,8 +792,6 @@ h6{ font-size: 20px; }
 	color: #f1f1f1;
 	font-size: 12px;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
 }
 
 /* COMMENTS PAGINATION ------------------------------------------------------------*/
@@ -974,8 +817,6 @@ h6{ font-size: 20px; }
 	color:#fff;
 	background: #555;
 	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
 }
  
 #content .comments-pagination a:hover{
@@ -1030,8 +871,7 @@ h6{ font-size: 20px; }
 	background: #fff;
 	border: 1px solid #ccc;
 	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
+	
 }
 
 #sc-contact-form input,
@@ -1117,8 +957,6 @@ h6{ font-size: 20px; }
 	color: #ffd800;
 	background: #363636;
 	border-radius: 15px;
-	-moz-border-radius: 15px;
-	-webkit-border-radius: 15px;
 }
 
 #content .pager li:hover a,
