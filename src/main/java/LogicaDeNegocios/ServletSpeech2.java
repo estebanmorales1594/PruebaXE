@@ -20,26 +20,40 @@ import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.BaseRecognizeCallback;
 
-
 /**
- * Servlet implementation class ServletSpeech
+ * Servlet implementation class ServletSpeech2
  */
-@WebServlet("/ServletSpeech")
-public class ServletSpeech extends HttpServlet{
-	
-	/**
-	 * 
-	 */
+@WebServlet("/ServletSpeech2")
+public class ServletSpeech2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	SpeechResults transcript;
-	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		String user = req.getParameter("user");
-		String pass = req.getParameter("password");
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ServletSpeech2() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String user = request.getParameter("user");
+		String pass = request.getParameter("password");
 		if ("edu4java".equals(user) && "eli4java".equals(pass)) {
-			response(resp, "login ok");
+			response(response, "login ok");
 		} else {
-			response(resp, "invalid login");
+			response(response, "invalid login");
 		}
 		
 		
@@ -54,11 +68,11 @@ public class ServletSpeech extends HttpServlet{
 		 DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
 		 if (!AudioSystem.isLineSupported(info))
 		 {
-			 response(resp, "Line not supported");
+			 response(response, "Line not supported");
 		     //System.out.println("Line not supported");
 		     System.exit(0);
 		  }
-		 TargetDataLine line = null;
+		TargetDataLine line = null;
 		try {
 			line = (TargetDataLine) AudioSystem.getLine(info);
 		} catch (LineUnavailableException e1) {
@@ -105,10 +119,9 @@ public class ServletSpeech extends HttpServlet{
 		 line.close();
 		 System.out.println("Fin.");
 		 
-		 response(resp, texto);
-		 //return texto;
+		 response(response, texto);
 	}
-
+	
 	private void response(HttpServletResponse resp, String msg)
 			throws IOException {
 			PrintWriter out = resp.getWriter();
@@ -118,4 +131,5 @@ public class ServletSpeech extends HttpServlet{
 			out.println("</body>");
 			out.println("</html>");
 	}
+
 }

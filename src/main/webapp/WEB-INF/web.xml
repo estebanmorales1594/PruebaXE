@@ -12,12 +12,12 @@
 	
 	<servlet>
 		<description>Generar Speech</description>
-		<servlet-name>Speech</servlet-name>
+		<servlet-name>ServletSpeech</servlet-name>
 		<servlet-class>LogicaDeNegocios.ServletSpeech</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>Speech</servlet-name>
+		<servlet-name>ServletSpeech</servlet-name>
 		<url-pattern>/generarSpeech</url-pattern>
 	</servlet-mapping>
 </web-app>
