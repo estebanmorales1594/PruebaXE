@@ -1,9 +1,9 @@
 package LogicaDeNegocios;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sound.sampled.AudioFormat;
@@ -18,16 +18,19 @@ import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.BaseRecognizeCallback;
 
-public class Speech  extends HttpServlet {
+public class ServletSpeech {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	SpeechResults transcript;
-
-	public String voz_a_texto() throws LineUnavailableException, InterruptedException
-	{
+	
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException, InterruptedException, LineUnavailableException {
+		String user = req.getParameter("user");
+		String pass = req.getParameter("password");
+		if ("edu4java".equals(user) && "eli4java".equals(pass)) {
+			response(resp, "login ok");
+		} else {
+			response(resp, "invalid login");
+		}
+		
 		
 		String texto;
 		int sampleRate = 16000;
@@ -40,7 +43,8 @@ public class Speech  extends HttpServlet {
 		 DataLine.Info info = new DataLine.Info(TargetDataLine.class, format);
 		 if (!AudioSystem.isLineSupported(info))
 		 {
-		     System.out.println("Line not supported");
+			 response(resp, "Line not supported");
+		     //System.out.println("Line not supported");
 		     System.exit(0);
 		  }
 		 TargetDataLine line = (TargetDataLine) AudioSystem.getLine(info);
@@ -58,8 +62,8 @@ public class Speech  extends HttpServlet {
 		{
 			public void onTranscription(SpeechResults speechResults) 
 			{
-		    transcript=speechResults;
-		       //System.out.println(speechResults+"\nHOLAAAA");
+				transcript=speechResults;
+		       //System.out.println(speechResults);
 		
 		     }
 		});
@@ -73,12 +77,18 @@ public class Speech  extends HttpServlet {
 		 line.stop();
 		 line.close();
 		 System.out.println("Fin.");
-		   
-		 return texto;
+		 
+		 response(resp, texto);
+		 //return texto;
 	}
 
-	public static void main(String[] args) throws LineUnavailableException, InterruptedException  {
-		Speech ss = new Speech();
-		System.out.println(ss.voz_a_texto());
+	private void response(HttpServletResponse resp, String msg)
+			throws IOException {
+			PrintWriter out = resp.getWriter();
+			out.println("<html>");
+			out.println("<body>");
+			out.println("<t1>" + msg + "</t1>");
+			out.println("</body>");
+			out.println("</html>");
 	}
 }
