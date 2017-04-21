@@ -3,6 +3,7 @@ package LogicaDeNegocios;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,16 +34,7 @@ public class ServletSpeech extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	SpeechResults transcript;
 	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {
-		String user = req.getParameter("user");
-		String pass = req.getParameter("password");
-		if ("edu4java".equals(user) && "eli4java".equals(pass)) {
-			response(resp, "login ok");
-		} else {
-			response(resp, "invalid login");
-		}
-		
-		
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException {		
 		String texto;
 		int sampleRate = 16000;
 		
@@ -105,17 +97,24 @@ public class ServletSpeech extends HttpServlet{
 		 line.close();
 		 System.out.println("Fin.");
 		 
-		 response(resp, texto);
+		 //response(resp, texto);
+		 
+		 //req.setAttribute("texto", texto);
+         //req.getRequestDispatcher("/index.html").forward(req, resp);
 		 //return texto;
+		 
+		 
+		 String data = new String();
+		 data = texto;
+
+		 req.setAttribute("data", data);
+		 RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+		 dispatcher.forward(req, resp);
 	}
 
-	private void response(HttpServletResponse resp, String msg)
-			throws IOException {
+	private void response(HttpServletResponse resp, String msg) throws IOException {
 			PrintWriter out = resp.getWriter();
-			out.println("<html>");
-			out.println("<body>");
-			out.println("<t1>" + msg + "</t1>");
-			out.println("</body>");
-			out.println("</html>");
+			String txt="txtNombre";
+			out.println("document.getElementById("+txt+").value = "+ msg);
 	}
 }
