@@ -13,7 +13,7 @@
 	<servlet>
 		<description>Generar Speech</description>
 		<servlet-name>ServletSpeech</servlet-name>
-		<servlet-class>LogicaDeNegocios.ServletSpeech</servlet-class>
+		<servlet-class>Servlet.ServletSpeech</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>

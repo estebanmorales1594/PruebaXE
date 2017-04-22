@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html" %>
+<!-- AGREGAR A JSP --><%@ page language="java" contentType="text/html" %>
+
+
 <!DOCTYPE  html>
 <html>
 	<head>

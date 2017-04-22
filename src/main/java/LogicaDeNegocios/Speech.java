@@ -1,11 +1,5 @@
 package LogicaDeNegocios;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -14,16 +8,13 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.TargetDataLine;
 
 import com.ibm.watson.developer_cloud.http.HttpMediaType;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.websocket.BaseRecognizeCallback;
 
-public class Speech  extends HttpServlet {
+public class Speech {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	SpeechResults transcript;
 
 	public String voz_a_texto() throws LineUnavailableException, InterruptedException
@@ -59,7 +50,7 @@ public class Speech  extends HttpServlet {
 			public void onTranscription(SpeechResults speechResults) 
 			{
 		    transcript=speechResults;
-		       //System.out.println(speechResults+"\nHOLAAAA");
+		       //System.out.println(speechResults);
 		
 		     }
 		});
@@ -79,6 +70,6 @@ public class Speech  extends HttpServlet {
 
 	public static void main(String[] args) throws LineUnavailableException, InterruptedException  {
 		Speech ss = new Speech();
-		System.out.println(ss.voz_a_texto());
+		ss.voz_a_texto();
 	}
 }
