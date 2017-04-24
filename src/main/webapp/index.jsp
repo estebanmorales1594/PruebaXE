@@ -1,7 +1,4 @@
-<!-- AGREGAR A JSP --><%@ page language="java" contentType="text/html" %>
-
-
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html" %>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -145,7 +142,7 @@
 			            <td ><h3>Pulse el boton para empezar a grabar</h3></td>
                       </tr>
                       <tr>
-			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">${data}</textarea></td>
+			            <td ><textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">${texto}</textarea></td>
                         <td  ><button class="submit" type="submit">Grabar</button></td>
 		              </tr>
 		            </table>

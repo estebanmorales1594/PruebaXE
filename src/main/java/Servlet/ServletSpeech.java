@@ -53,7 +53,7 @@ public class ServletSpeech extends HttpServlet {
 		}
 		 
 
-		 req.setAttribute("data", texto);
+		 req.setAttribute("texto", texto);
 		 RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
 		 dispatcher.forward(req, resp);
 	}
