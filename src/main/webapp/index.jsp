@@ -1,10 +1,16 @@
-<%@ page language="java" contentType="text/html" %>
+<%-- 
+    Document   : index
+    Created on : 24-abr-2017, 17:07:39
+    Author     : Esteban Morales
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>PROYECTO XE</title>
-		
-		<!-- CSS -->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
 		
 		
@@ -38,15 +44,9 @@
 		<link rel="stylesheet" href="js/poshytip-1.0/src/tip-twitter/tip-twitter.css" type="text/css" />
 		<link rel="stylesheet" href="js/poshytip-1.0/src/tip-yellowsimple/tip-yellowsimple.css" type="text/css" />
 		<script type="text/javascript" src="js/poshytip-1.0/src/jquery.poshytip.min.js"></script>
-		<!-- ENDS poshytip -->
-		
-		
-		
-		
-		
+		<!-- ENDS poshytip -->	
 	</head>
-	
-	<body class="home">
+    <body class="home">
 	
 	
 		<!-- WRAPPER -->
@@ -78,15 +78,15 @@
 							<li><a href="EliminarCurso.html"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li><a href="">Evaluación</a>
+                    <li><a href="">EvaluaciÃ³n</a>
 						<ul>
-							<li><a href="RegistrarEvaluacion.html"><span>Registrar Evaluación</span></a></li>
-                            <li><a href="HabilitarEvaluacion.html"><span>Habilitar Evaluación</span></a></li>
-                            <li><a href="EstadoEvaluacion.html"><span>Ver Estado Evaluación</span></a></li>
-                            <li><a href="DetalleEvaluacion.html"><span>Ver Detalle Evaluación</span></a></li>
-							<li><a href="ConsultarEvaluacion.html"><span>Consultar Evaluación</span></a></li>
-							<li><a href="ActualizarEvaluacion.html"><span>Actualizar Evaluación</span></a></li>
-							<li><a href="EliminarEvaluacion.html"><span>Eliminar Evaluación</span></a></li>
+							<li><a href="RegistrarEvaluacion.html"><span>Registrar EvaluaciÃ³n</span></a></li>
+                            <li><a href="HabilitarEvaluacion.html"><span>Habilitar EvaluaciÃ³n</span></a></li>
+                            <li><a href="EstadoEvaluacion.html"><span>Ver Estado EvaluaciÃ³n</span></a></li>
+                            <li><a href="DetalleEvaluacion.html"><span>Ver Detalle EvaluaciÃ³n</span></a></li>
+							<li><a href="ConsultarEvaluacion.html"><span>Consultar EvaluaciÃ³n</span></a></li>
+							<li><a href="ActualizarEvaluacion.html"><span>Actualizar EvaluaciÃ³n</span></a></li>
+							<li><a href="EliminarEvaluacion.html"><span>Eliminar EvaluaciÃ³n</span></a></li>
 						</ul>
 					</li>
                     <li><a href="">Pregunta</a>
@@ -150,29 +150,7 @@
 		        </div>
 		      </form>
 		  </div>
-<div id="footer">
-				
-				
-	  <ul id="footer-cols">
-					<li class="col">
-						<h6>About the theme</h6>
-					</li>
-					
-					<li class="col">
-						<h6>Categories</h6>
-						<ul>
-							<li><a href="#">Webdesign</a></li>
-							<li><a href="#/">Wordpress</a></li>
-							<li><a href="#">Photo</a></li>
-							<li><a href="#">Code</a></li>
-							<li><a href="#">Web design</a></li>
-							<li><a href="#/">Marketplace</a></li>
-							<li><a href="#">Writting</a></li>
-							<li><a href="#">Drawings</a></li>
-						</ul>
-					</li>
-				</ul>
-				
+<div id="footer">		
 			</div>
 			
 		
@@ -180,5 +158,4 @@
 		
 	
 	</body>
-	
 </html>
