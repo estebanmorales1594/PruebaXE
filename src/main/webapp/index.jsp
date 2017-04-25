@@ -143,7 +143,7 @@
                       </tr>
                       <tr>
 			            <td>
-                                        <!--textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px"></textarea-->
+                                        <textarea id="txtNombre" name="txtNombre" style="width:700px;height:200px">${texto}</textarea>
                                         <input name="firstname" value="${texto}" />
                                     </td>
                         <td><button class="submit" type="submit">Grabar</button></td>
