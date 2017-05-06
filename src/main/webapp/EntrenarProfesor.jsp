@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE  html>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Modulo Administrativo</title>
+		<title>Entrenar Profesor</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -83,18 +85,18 @@
 			
 							<li><a><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
                             <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
 							
@@ -140,7 +142,7 @@
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=EliminarSubtema"><span>Eliminar Subtema</span></a></li>
 						</ul>
 					</li>
-					<li><a>Entrenamiento</a>
+					<li class="current-menu-item"><a>Entrenamiento</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/SubirArchivos.jsp"><span>Subir Archivos Positivos</span></a></li>
 						</ul>
@@ -149,45 +151,52 @@
 				</ul>
 				<!-- Navigation -->	
 				
-				
-				
-				
-				
-		
-				
-				<div id="slider-block">
+						
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
-		
 			<div id="main">
-				
-				
-				<div id="content">
-					
+			 <% String ruta = (String) request.getAttribute("rutaP"); 
+						System.out.println(ruta +"Hola2");
+				String rutaN = (String) request.getAttribute("rutaN"); 
+			    System.out.println(ruta +"Hola2");		
 						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
+						%>
+			  <form name="entrenarProfesor" action="entrenando?x=<%=ruta%>&y=<%=rutaN%>" method="post">
+			    <div>
+			      <h1> Entrenar profesor Digital <font size="3"></h1>
+			      <div>
+			    	<table>
+			    	<tr>
+			            <td ><h3>Nombre del Clasificador</h3></td>
+			            <td ><textarea id="txtClasificador" name="txtClasificador" placeholder="Clasificador"  required></textarea></td>
+		            </tr>
+		            
+		           	<tr>
+			            <td ><h3>Nombre de la Clase </h3></td>
+			            <td ><textarea type="text" id="txtClass" name="txtClass" placeholder="Nombre Clase"  required></textarea></td>
+		              </tr>
+		              
+		              <td><h1></h1></td>
+                     <td><h1></h1></td>
+                     
+                     <tr
+                    >   
+			            <td  ><button class="submit" type="submit" >Entrenar</button></td>
+		              </tr>
+            				
+					  
+            	 </table>
+			      </div>
+		        </div>
 		      </form>
-			
-			<div id="footer">
-			</div>
-			
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

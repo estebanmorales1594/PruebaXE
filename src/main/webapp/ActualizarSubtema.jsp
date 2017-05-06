@@ -1,8 +1,9 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Modulo Administrativo</title>
+		<title>Actualizar Subtema</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -83,18 +84,18 @@
 			
 							<li><a><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
                             <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
 							
@@ -132,7 +133,7 @@
 							<li><a href="<%=request.getContextPath()%>/ToTema?x=EliminarTema"><span>Eliminar Tema</span></a></li>
 						</ul>
 					</li>
-                    <li><a>Subtema</a>
+                    <li class="current-menu-item"><a>Subtema</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=RegistrarSubtema"><span>Registrar Subtema</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToSubtema?x=ConsultarSubtema"><span>Consultar Subtema</span></a></li>
@@ -152,8 +153,7 @@
 				
 				
 				
-				
-		
+	
 				
 				<div id="slider-block">
 				</div>
@@ -162,32 +162,83 @@
 			</div>
 		
 			<div id="main">
-				
-				
-				<div id="content">
-					
-						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
-		      </form>
-			
-			<div id="footer">
-			</div>
-			
+			    <div>
+			      <h2>Actualizar Subtema</h2>
+			      <div>
+			        <table>
+                    
+                    
+                    <tr>
+                    <form action="cargarDatosSubtema" method="post">
+			            <td ><h3>Codigo del Subtema</h3></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Curso"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.*" %>
+			            <%
+			            		ArrayList<Subtema> subtemas= (ArrayList<Subtema>) request.getAttribute("ListSubtemas"); 
+			            		
+						%>
+			            
+			            
+			            <select id="selCodigo" name="selCodigo">
+			            
+			            <%  for(Subtema s:subtemas){ %>
+			                <option value="<%=s.getCodSubTema() %>"><%= s.getDescripcion()%></option>
+				        <% } %>
+			            </select></td>
+                        <td><button class="submit" type="submit" >Cargar Subtema</button></td>
+                        </form>
+		              </tr>
+                      
+                      <% try{
+                      		String subtema = (String) request.getAttribute("Subtema");
+                      	 %>
+                      	<form name="actualizarSubtema" action="ActualizarSubtema?x=<%=subtema%>" method="post">
+                       <tr>
+                      	<% }catch(Exception e){
+                      		System.out.println(e);%>
+                      		<form name="actualizarSubtema" action="ActualizarSubtema" method="post">
+                            <tr>
+                      	<%}%>
+                      
+			            <td ><h3>Codigo del Tema</h3></td>
+			            <td ><!--input type="text" id="txtCodigo2" name="txtCodigo" placeholder="Codigo Tema"  required/-->
+			            <%
+			            		ArrayList<Tema> temas= (ArrayList<Tema>) request.getAttribute("ListTemas"); 
+			            		
+						%>
+			            <select id="selCodigoTema" name="selCodigoTema">
+			            <%if(temas!=null){ %>
+			            <%  for(Tema t:temas){ %>
+			                <option value="<%=t.getCodTema() %>"><%= t.getDescripcionTema()%></option>
+				        <% } %>
+				        <% } %>
+			            </select></td>
+		              </tr>
+			          
+		              <tr>
+			            <td ><h3>Descripcion del Subtema </h3></td>
+			            <%
+			            		String texto= (String) request.getAttribute("texto");
+						%>
+			            <td ><input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion"  value="<%= texto %>" required/>
+			            
+			            </td>
+		              </tr>
+		              
+			       
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Actualizar Subtema</button></td>
+		              </tr>
+		              </form>
+		            </table>
+		          </div>
+		        </div>
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

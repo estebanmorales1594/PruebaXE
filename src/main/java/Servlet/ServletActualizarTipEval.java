@@ -1,28 +1,28 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.sampled.LineUnavailableException;
 
-import Integracion.Speech;
+import Integracion.BaseDeDatos;
+import logicaDeNegocios.Tema;
 
 /**
- * Servlet implementation class ServletSpeech
+ * Servlet implementation class ServletActualizarTipEval
  */
-@WebServlet("/ServletSpeech")
-public class ServletSpeech extends HttpServlet {
+@WebServlet("/ServletActualizarTipEval")
+public class ServletActualizarTipEval extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletSpeech() {
+    public ServletActualizarTipEval() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,18 +39,13 @@ public class ServletSpeech extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String texto = null;
-		
-		Speech sp=new Speech();
-		try {
-			texto=sp.voz_a_texto();
-		} catch (LineUnavailableException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		 request.setAttribute("texto", texto);
-		 request.getRequestDispatcher("/index.jsp").forward(request, response);
+		BaseDeDatos bd = new BaseDeDatos();
+		String codigoTipEval = request.getParameter("x");
+		String nombreActualizar = request.getParameter("txtTipo");
+		bd.actualizarTipEval(codigoTipEval, nombreActualizar);
+		ArrayList<String> tipoEvaluacion = bd.selectTipoEvaluacion();
+		request.setAttribute("ListTipoEval", tipoEvaluacion);;
+		request.getRequestDispatcher("ActualizarTipoEvaluacion.jsp").forward(request, response);
 	}
 
 }

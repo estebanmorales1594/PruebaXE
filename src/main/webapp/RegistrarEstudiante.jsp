@@ -1,8 +1,9 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
-	<head>
+<head>
 		<meta charset="utf-8">
-		<title>Modulo Administrativo</title>
+		<title>Registro de Estudiante</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -40,10 +41,7 @@
 		<script type="text/javascript" src="js/poshytip-1.0/src/jquery.poshytip.min.js"></script>
 		<!-- ENDS poshytip -->
 		
-		
-		
-		
-		
+	
 	</head>
 	
 	<body class="home">
@@ -64,7 +62,7 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 					
-                    <li><a>Estudiante</a>
+                    <li class="current-menu-item"><a>Estudiante</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarEstudiante.jsp"><span>Registrar Estudiante</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
@@ -83,18 +81,18 @@
 			
 							<li><a><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
                             <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
 							
@@ -149,45 +147,61 @@
 				</ul>
 				<!-- Navigation -->	
 				
-				
-				
-				
-				
-		
-				
 				<div id="slider-block">
 				</div>
 			
 				
 			</div>
-		
 			<div id="main">
-				
-				
-				<div id="content">
-					
-						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
+			  <form name="registroestudiante" action="registrarEstudiante" method="post">
+			    <div>
+			      <h2>Registrar Estudiante</h2>
+			      <div>
+			        <table>
+			        <tr>
+			            <td ><h3 >Numero de Identificacion</h3></td>
+			            <td ><input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="X-XXXX-XXXX"  required/></td>
+		            </tr>
+		           	<tr>
+			            <td ><h3>Nombre </h3></td>
+			            <td ><input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre"  required/></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Primer Apellido </h3></td>
+			            <td ><input type="text" id="txApellido1" name="txtApellido1" placeholder="Apellido1"  required/></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Segundo Apellido </h3></td>
+			            <td ><input type="text" id="txtApellido2" name="txtApellido2" placeholder="Apellido2"  required/></td>
+		              </tr>
+			          
+		                 <tr>
+			            <td ><h3 >Numero de Carnet</h3></td>
+			            <td ><input type="text" id="txtCarnet" name="txtCarnet" placeholder="Carnet Estudiantil"  required/></td>
+		              </tr>
+			          <tr>
+			            <td ><h3 >Fecha Nacimiento</h3></td>
+			            <td><input type="text" id="txtNacimiento" name="txtNacimiento"  placeholder="Dia/Mes/A帽o"  required/></td>
+		              </tr>
+			          <tr>
+			            <td ><h3 >Correo Electronico</h3></td>
+			            <td ><input type="email" id="txtEmail" name="txtEmail"  placeholder="@"  required/></td>
+		              </tr>
+			       
+			          <tr>
+			            
+			            <td  ><button class="submit" type="submit" >Registrar Estudiante</button></td>
+		              </tr>
+		            </table>
+		          </div>
+		        </div>
 		      </form>
-			
-			<div id="footer">
-			</div>
-			
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
+      </div>
+</body>
 	
-	</body>
-	
+</html>
 </html>

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Modulo Administrativo</title>
+		<title>Configurar Evaluacion</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -78,23 +78,23 @@
 							<li><a href="<%=request.getContextPath()%>/ToCurso?x=EliminarCurso"><span>Eliminar Curso</span></a></li>
 						</ul>
 					</li>
-                    <li><a>Evaluacion</a>
+                    <li class="current-menu-item"><a>Evaluacion</a>
 						<ul>
 			
-							<li><a><span>Evaluacion</span></a>
+							<li class="current-menu-item"><a><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
                             <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
 							
@@ -153,41 +153,115 @@
 				
 				
 				
-		
 				
-				<div id="slider-block">
+				
+			  <div id="slider-block">
 				</div>
 			
 				
 			</div>
-		
 			<div id="main">
-				
-				
-				<div id="content">
-					
-						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
-		      </form>
-			
-			<div id="footer">
-			</div>
-			
+			    <div>
+			      <h2>Configurar Evaluacion</h2>
+			      <div>
+			        <table> 
+			        <% String codEval=(String)request.getAttribute("CodEval"); %> 
+			         
+			        <% String tipEval=(String)request.getAttribute("CodTipEval"); %> 
+			         
+		           <form action="cargarPreguntas?cEv=<%=codEval%>&tEv=<%=tipEval%>" method="post">
+		              <tr>
+		                <td ><h3>Codigo del Tema</h3></td>
+		                <%@ page import="java.util.ArrayList, logicaDeNegocios.Tema, logicaDeNegocios.Subtema" %>
+		                <%
+			            		ArrayList<Tema> temas= (ArrayList<Tema>) request.getAttribute("ListTemas"); 
+			            		
+						%>
+			            <td ><select id="selTema" name="selTema">
+			            <%  for(Tema t:temas){ %>
+			                <option value="<%=t.getDescripcionTema()%>"><%= t.getDescripcionTema()%></option>
+				        <% } %>
+			            </select></td>
+			            <td><input type="checkbox" name="chk1"></td>
+			         </tr>
+			         <tr>
+			         	<td ><h3>Codigo del Subtema</h3></td>
+			         	<%
+			            		ArrayList<Subtema> subtemas= (ArrayList<Subtema>) request.getAttribute("ListSubtemas"); 
+			            		
+						%>
+			            <td ><select id="selSubtema" name="selSubtema">
+			            <%  for(Subtema s:subtemas){ %>
+			                <option value="<%=s.getDescripcion() %>"><%= s.getDescripcion()%></option>
+				        <% } %>
+			            </select></td>
+			            <td><input type="checkbox" name="chk2"></td>
+		              </tr>
+                      
+                      <tr>
+                     	 
+			            <td ><h3>Tipos de preguntas en la evaluacion</h3></td>
+			            <td ><!---input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/--->
+			            <%
+			            		ArrayList<String> tipoPregunta= (ArrayList<String>) request.getAttribute("ListTipoPreguntas"); 
+			            		
+						%>
+			            <select id="selTipoPre" name="selTipoPre">
+			            <%Integer j=1; %>
+			            <%for(String t:tipoPregunta){ %> 
+			                <option value="<%=t%>"><%= t %></option>
+			            <%j++; %>
+				        <% } %>
+			            </select></td>
+			             <td  ><button class="submit" type="submit" >Filtar tipos de pregunta</button></td>
+		              </tr>
+		          </form>
+		             
+			       <form name="configurarEvaluacion" method="post">
+			       	<tr>
+			            <td ><h3>Preguntas en la evaluacion</h3></td>
+			            <td ><!---input type="text" id="txtDescripcion" name="txtDescripcion" placeholder="Descripcion Evaluacion"  required/--->
+			            <%
+			            		ArrayList<String> preguntas= (ArrayList<String>) request.getAttribute("ListPreguntas"); 
+			            		
+						%>
+			            <select id="selPre" name="selPre">
+			            <%Integer o=1; %>
+			            <%if(preguntas!=null){ %>
+			            <%for(String p:preguntas){ %> 
+			                <option value="<%=o.toString()%>"><%= p %></option>
+			            <%o++; %>
+				        <% } %>
+				        <% } %>
+			            </select></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Puntaje Correspondiente a la pregunta</h3></td>
+			            <td ><input type="text" id="txtPts" name="txtPts" placeholder="Puntaje Correspondiente"  required/></td>
+		              </tr>
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" formaction="ConfEvaluacion?cEv=<%=codEval%>&tEv=<%=tipEval%>" type="submit" >Agregar Pregunta</button></td>
+		              </tr>
+		              <tr>
+			            <td ></td>
+			            <td  ><button class="submit" formaction="crearPDF?selCodigo=<%=codEval%>" type="submit" >Generar PDF</button></td>
+		              </tr>
+		              </form>
+		              <form action="ToConfEvaluacion" method="get">
+		              <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Terminar</button></td>
+		              </tr>
+		              </form>
+		            </table>
+		          </div>
+		        </div>
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

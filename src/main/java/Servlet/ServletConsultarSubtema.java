@@ -1,28 +1,30 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.sampled.LineUnavailableException;
 
-import Integracion.Speech;
+import Integracion.BaseDeDatos;
+import logicaDeNegocios.Curso;
+import logicaDeNegocios.Subtema;
+import logicaDeNegocios.Tema;
 
 /**
- * Servlet implementation class ServletSpeech
+ * Servlet implementation class ServletConsultarSubtema
  */
-@WebServlet("/ServletSpeech")
-public class ServletSpeech extends HttpServlet {
+@WebServlet("/ServletConsultarSubtema")
+public class ServletConsultarSubtema extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletSpeech() {
+    public ServletConsultarSubtema() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,18 +41,18 @@ public class ServletSpeech extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String texto = null;
-		
-		Speech sp=new Speech();
-		try {
-			texto=sp.voz_a_texto();
-		} catch (LineUnavailableException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		 request.setAttribute("texto", texto);
-		 request.getRequestDispatcher("/index.jsp").forward(request, response);
+		String codigoSubtema = request.getParameter("selCodigo"); 	
+		BaseDeDatos bd = new BaseDeDatos();
+		String nombreSubtema = bd.SelectPorCodigoSubtema(codigoSubtema);
+		String nombreTema = bd.SelectSubtema(codigoSubtema);
+		request.setAttribute("texto", nombreSubtema);
+		request.setAttribute("texto2", nombreTema);
+		ArrayList<Subtema> subtemas = bd.selectSubTema();
+		request.setAttribute("ListSubtemas", subtemas);
+		request.setAttribute("Subtema", codigoSubtema);
+		ArrayList<Tema> temas = bd.selectTema();
+		request.setAttribute("ListTemas", temas);
+		request.getRequestDispatcher("ConsultarSubtema.jsp").forward(request, response);
 	}
 
 }

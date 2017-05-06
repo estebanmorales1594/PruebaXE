@@ -1,8 +1,9 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Modulo Administrativo</title>
+		<title>Matricular Estudiante</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -64,7 +65,7 @@
 				<!-- Navigation -->
 				<ul id="nav" class="sf-menu">
 					
-                    <li><a>Estudiante</a>
+                    <li class="current-menu-item"><a>Estudiante</a>
 						<ul>
 							<li><a href="<%=request.getContextPath()%>/RegistrarEstudiante.jsp"><span>Registrar Estudiante</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/ToMatricular"><span>Matricular Estudiante</span></a></li>
@@ -83,18 +84,18 @@
 			
 							<li><a><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
                             <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
 							
@@ -153,7 +154,7 @@
 				
 				
 				
-		
+			
 				
 				<div id="slider-block">
 				</div>
@@ -162,32 +163,52 @@
 			</div>
 		
 			<div id="main">
-				
-				
-				<div id="content">
-					
-						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
+			  <form name="matricularEstudiante" action="postMatricular" method="post">
+			    <div>
+			      <h2>Matricular Estudiante</h2>
+			      <div>
+			        <table>
+			          <tr>
+			            <td ><h3>Identificacion del Estudiante</h3></td>
+			            <td ><!--input type="text" id="txtIdentificacion" name="txtIdentificacion" placeholder="Identificacion Estudiante"  required/-->
+			            <%@ page import="java.util.ArrayList, logicaDeNegocios.Estudiante, logicaDeNegocios.Curso" %>
+			            <%
+			            		ArrayList<Estudiante> estudiantes= (ArrayList<Estudiante>) request.getAttribute("ListEstudiantes");
+			            		ArrayList<Curso> cursos= (ArrayList<Curso>) request.getAttribute("ListCursos"); 
+			            		
+						%>
+			            <select id="selIdentificacion" name="selIdentificacion">
+			            <%  for(Estudiante e:estudiantes){ %>
+				            <option value="<%=e.getNumeroIdentificacion() %>"><%= e.getNombre()%> <%=e.getApellido1() %></option>
+				        <% } %>
+			            </select></td>
+		              </tr>
+                      <tr>
+			            <td ><h3>Codigo del Curso</h3></td>
+			            <td ><!--input type="text" id="txtNombreCurso" name="txtNombre" placeholder="Nombre Curso"  required/-->
+			            <select id="selCodigo" name="selCodigo">
+			            <%  for(Curso c:cursos){ %>
+			                <option value="<%=c.getCodigo() %>"><%=c.getCodigo() %> - <%= c.getDescripcionCurso()%></option>
+				        <% } %>
+				        </select></td>
+		              </tr>
+		             
+                      
+		              
+			       
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Matricular Estudiante</button></td>
+		              </tr>
+		            </table>
+		          </div>
+		        </div>
 		      </form>
-			
-			<div id="footer">
-			</div>
-			
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

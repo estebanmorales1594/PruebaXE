@@ -1,28 +1,27 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.sampled.LineUnavailableException;
 
-import Integracion.Speech;
+import Integracion.BaseDeDatos;
 
 /**
- * Servlet implementation class ServletSpeech
+ * Servlet implementation class ServletConsultarTipPreg
  */
-@WebServlet("/ServletSpeech")
-public class ServletSpeech extends HttpServlet {
+@WebServlet("/ServletConsultarTipPreg")
+public class ServletConsultarTipPreg extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletSpeech() {
+    public ServletConsultarTipPreg() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,18 +38,14 @@ public class ServletSpeech extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String texto = null;
-		
-		Speech sp=new Speech();
-		try {
-			texto=sp.voz_a_texto();
-		} catch (LineUnavailableException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		 request.setAttribute("texto", texto);
-		 request.getRequestDispatcher("/index.jsp").forward(request, response);
+		String codigoTipPreg = request.getParameter("selCodigo"); 	
+		BaseDeDatos bd = new BaseDeDatos();
+		String nombreTipPreg = bd.SelectPorCodigoTPreg(codigoTipPreg);
+		request.setAttribute("texto", nombreTipPreg);	
+		ArrayList<String> tipoPregunta = bd.selectTipoPregunta();
+		request.setAttribute("ListTipoPreguntas", tipoPregunta);
+		request.setAttribute("TipPreg", codigoTipPreg);
+		request.getRequestDispatcher("ConsultarTipoPregunta.jsp").forward(request, response);
 	}
 
 }

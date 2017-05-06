@@ -1,28 +1,28 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sound.sampled.LineUnavailableException;
 
-import Integracion.Speech;
+import Integracion.BaseDeDatos;
+import logicaDeNegocios.*;
 
 /**
- * Servlet implementation class ServletSpeech
+ * Servlet implementation class ServletSeleccionarCurso
  */
-@WebServlet("/ServletSpeech")
-public class ServletSpeech extends HttpServlet {
+@WebServlet("/ServletSeleccionarCurso_C")
+public class ServletSeleccionarCurso_C extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletSpeech() {
+    public ServletSeleccionarCurso_C() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,6 +30,7 @@ public class ServletSpeech extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -39,18 +40,18 @@ public class ServletSpeech extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String texto = null;
+		String curso= request.getParameter("selCodigo");
+		//System.out.println("vuelta a cargar");
+		//System.out.println(curso);
+		BaseDeDatos bd= new BaseDeDatos();
+		ArrayList<Curso> cursos = bd.selectCurso();
+		request.setAttribute("ListCursos", cursos);
+		ArrayList<Tema> temas = bd.selectTema(curso);
+		request.setAttribute("Curso", curso);
+		request.setAttribute("ListTemas", temas);
+		request.getRequestDispatcher("RegistrarPreguntaComplete.jsp").forward(request, response);
 		
-		Speech sp=new Speech();
-		try {
-			texto=sp.voz_a_texto();
-		} catch (LineUnavailableException | InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
-		 request.setAttribute("texto", texto);
-		 request.getRequestDispatcher("/index.jsp").forward(request, response);
+		
 	}
 
 }

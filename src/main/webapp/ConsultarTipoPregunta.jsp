@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Modulo Administrativo</title>
+		<title>Consultar Tipo Pregunta</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -83,25 +83,25 @@
 			
 							<li><a><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
                             <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
 							
 						</ul>
 					</li>
 					
-					<li><a>Pregunta</a>
+					<li class="current-menu-item"><a>Pregunta</a>
 						<ul>
 							<li><a><span>Registrar Pregunta</span></a>
                             	<ul>
@@ -110,7 +110,7 @@
                                     <li><a href="<%=request.getContextPath()%>/postRegistrarD"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-                            <li><a><span>Tipo de Pregunta</span></a>
+                            <li class="current-menu-item"><a><span>Tipo de Pregunta</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/RegistrarTipoPregunta.jsp"><span>Registrar Tipo Pregunta</span></a></li>
                                     <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsultarTipoPregunta"><span>Consultar Tipo Pregunta</span></a></li>
@@ -153,7 +153,7 @@
 				
 				
 				
-		
+			
 				
 				<div id="slider-block">
 				</div>
@@ -162,32 +162,61 @@
 			</div>
 		
 			<div id="main">
-				
-				
-				<div id="content">
-					
-						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
+			  <form name="consultarPregunta" method="post">
+			    <div>
+			      <h2>Consultar Tipo de Pregunta</h2>
+			      <div>
+			        <table>
+			          <tr>
+			            
+			            <td ><h3>Codigo Tipo de la Pregunta</h3></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtCodigo" placeholder="Codigo Pregunta"  required/-->
+			            <%@ page import="java.util.ArrayList" %>
+			            <%
+			            		ArrayList<String> tipoPregunta= (ArrayList<String>) request.getAttribute("ListTipoPreguntas"); 
+			            		
+						%>
+			            <select id="selCodigo" name="selCodigo">
+			            <%Integer i=1; %>
+			            <%for(String t:tipoPregunta){ %> 
+			                <option value="<%=i.toString()%>"><%= t %></option>
+			            <%i++; %>
+				        <% } %>
+			            </select></td>
+                       
+		              </tr>
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" formaction="consultarTipPreg" type="submit" >Consultar Tipo Pregunta</button></td>
+		              </tr>
+		              
+		              <%
+		              		String tipPreg = (String) request.getAttribute("TipPreg");  		
+		             		 String texto= (String) request.getAttribute("texto");
+						%>
+		              <% if(tipPreg!=null&&texto!=null){ %>
+		              <tr>
+			            <td ><h3>Codigo Tipo de la Pregunta:</h3></td>
+			            <td  ><h3><%= tipPreg %></h3></td>
+		              </tr>
+		              <tr>
+			            <td ><h3>Tipo de la Pregunta:</h3></td>
+			            <td  ><h3><%= texto %></h3></td>
+		              </tr>
+		              <tr>
+			            <td ></td>
+			            <td  ><button class="submit" formaction="ToTipoPregunta?x=ConsultarTipoPregunta" type="submit" >Salir</button></td>
+		              </tr>
+		              <% } %>
+		            </table>
+		          </div>
+		        </div>
 		      </form>
-			
-			<div id="footer">
-			</div>
-			
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>

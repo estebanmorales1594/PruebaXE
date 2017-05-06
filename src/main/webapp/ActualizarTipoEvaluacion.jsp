@@ -1,8 +1,9 @@
-<!DOCTYPE  html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Modulo Administrativo</title>
+		<title>Actualizar Tipo Evaluacion</title>
 		
 		<!-- CSS -->
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
@@ -83,25 +84,25 @@
 			
 							<li><a><span>Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci贸n</span></a></li>
-                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToConfEvaluacion"><span>Configurar Evaluaci髇</span></a></li>
+                                    <li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=HabilitarEvaluacion"><span>Habilitar Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=EstadoEvaluacion"><span>Ver Estado Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToEvaluacion?x=DetalleEvaluacion"><span>Ver Detalle Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
                             <li><a><span>Tipo de Evaluacion</span></a>
                             	<ul>
-                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci贸n</span></a></li>
-                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci贸n</span></a></li>
-									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci贸n</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/RegistrarTipoEvaluacion.jsp"><span>Registrar Tipo de Evaluaci髇</span></a></li>
+                            		<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ConsultarTipoEvaluacion"><span>Consultar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=ActualizarTipoEvaluacion"><span>Actualizar Tipo Evaluaci髇</span></a></li>
+									<li><a href="<%=request.getContextPath()%>/ToTipoEvaluacion?x=EliminarTipoEvaluacion"><span>Eliminar Tipo Evaluaci髇</span></a></li>
                                 </ul>
                             </li>
 							
 						</ul>
 					</li>
 					
-					<li><a>Pregunta</a>
+					<li class="current-menu-item"><a>Pregunta</a>
 						<ul>
 							<li><a><span>Registrar Pregunta</span></a>
                             	<ul>
@@ -110,7 +111,7 @@
                                     <li><a href="<%=request.getContextPath()%>/postRegistrarD"><span>Desarrollo</span></a></li>
                                 </ul>
                             </li>
-                            <li><a><span>Tipo de Pregunta</span></a>
+                            <li class="current-menu-item"><a><span>Tipo de Pregunta</span></a>
                             	<ul>
                             		<li><a href="<%=request.getContextPath()%>/RegistrarTipoPregunta.jsp"><span>Registrar Tipo Pregunta</span></a></li>
                                     <li><a href="<%=request.getContextPath()%>/ToTipoPregunta?x=ConsultarTipoPregunta"><span>Consultar Tipo Pregunta</span></a></li>
@@ -153,7 +154,7 @@
 				
 				
 				
-		
+			
 				
 				<div id="slider-block">
 				</div>
@@ -162,32 +163,65 @@
 			</div>
 		
 			<div id="main">
-				
-				
-				<div id="content">
-					
-						
-						
-	
-	
-	
-				</div>
-				
-	
-	
-			</div>
-			<div id="main">
-			  <form name="ServletModuloAdministrador" action="ServletModuloAdministrador" method="post">
-			 
-		      </form>
-			
-			<div id="footer">
-			</div>
-			
+			    <div>
+			      <h2>Actualizar Tipo Evaluacion</h2>
+			      <div>
+			        <table>
+			          <tr>
+                      <form action="cargarDatosTipEval" method="post">
+			            <td ><h3>Codigo del Tipo Evaluacion</h3></td>
+			            <td ><!--input type="text" id="txtCodigo" name="txtNombre" placeholder="Codigo Evaluacion"  required/-->
+			            <%@ page import="java.util.ArrayList" %>
+			            <%
+			            		ArrayList<String> tipoEval= (ArrayList<String>) request.getAttribute("ListTipoEval"); 
+			            		
+						%>
+			            <select id="selCodigo" name="selCodigo">
+			            <%Integer i=1; %>
+			            <%for(String t:tipoEval){ %> 
+			                <option value="<%=i.toString()%>"><%= t %></option>
+			            <%i++; %>
+				        <% } %>
+				        </select></td>
+                        <td><button class="submit" type="submit" >Cargar Tipo Evaluacion</button></td>
+                        </form>
+		              </tr>
+                      
+                      
+                      <% try{
+                      		String tipEval = (String) request.getAttribute("TipEval");
+                      	 %>
+                      	<form name="actualizarTipEval" action="ActualizarTipEval?x=<%=tipEval%>" method="post">
+                       <tr>
+                      	<% }catch(Exception e){
+                      		System.out.println(e);%>
+                      		<form name="actualizarTipEval" action="ActualizarTipEval" method="post">
+                            <tr>
+                      	<%}%>
+                      
+			            <td ><h3>Tipo de la Evaluacion </h3></td>
+			            <%
+			            		String texto= (String) request.getAttribute("texto");
+						%>
+			            <td ><input type="text" id="txtTipo" name="txtTipo" placeholder="Tipo" value="<%= texto %>"  required/>
+			      		</td>
+		              </tr>
+                      
+		              
+			       
+			          <tr>
+			            <td ></td>
+			            <td  ><button class="submit" type="submit" >Actualizar Tipo Evaluacion</button></td>
+		              </tr>
+		             </form>
+		            </table>
+		          </div>
+		        </div>
+		  </div>
+		<div id="footer">
 		
 		</div>
-		
-	
-	</body>
+      </div>
+</body>
 	
 </html>
